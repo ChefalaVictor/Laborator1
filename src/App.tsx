@@ -1,73 +1,26 @@
-import {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import {CustomInput} from "./components/CustomInput.tsx";
-import {CustomItems} from "./components/CustomItems.tsx";
+import React from 'react';
+import {Layout} from 'antd';
+import SidebarCustom from "./layouts/SidebarCustom.tsx";
+import HeaderCustom from "./layouts/HeaderCustom.tsx";
+import FooterCustom from "./layouts/FooterCustom.tsx";
+import ContentCustom from "./layouts/ContentCustom.tsx";
 
-function App() {
-    const [count, setCount] = useState(100)
-    // const [text, setText] = useState('')
-
-    const [lists, setLists] = useState([
-        {
-            id: 1,
-            name: 'John'
-        },
-        {
-            id: 2,
-            name: 'Jane'
-        },
-        {
-            id: 3,
-            name: 'Doe'
-        }
-    ])
-
-    const [lists1, setLists1] = useState([
-        {
-            id: 1,
-            name: 'John'
-        },
-        {
-            id: 2,
-            name: 'Tom'
-        },
-        {
-            id: 3,
-            name: 'Doe'
-        }
-    ])
-
-
+const App: React.FC = () => {
     return (
         <>
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
-                </a>
-            </div>
-            <h1>Test</h1>
-            <div className="card">
-                <button className={'custom-button'} onClick={() => setCount((count) => count + 100)}>
-                    count is {count}
-                </button>
-                {/* <CustomInput  text={text} setText={setText}/> */}
+            <Layout hasSider>
+                <SidebarCustom />
 
-                <CustomItems lists={lists} />
-                <CustomItems lists={lists1} />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
+                <Layout style={{marginLeft: 200}}>
+
+                    <HeaderCustom />
+
+                    <ContentCustom />
+                    <FooterCustom />
+                </Layout>
+            </Layout>
         </>
-    )
-}
+    );
+};
 
-export default App
+export default App;
