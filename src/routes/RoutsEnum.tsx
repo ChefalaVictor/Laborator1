@@ -3,12 +3,13 @@ import {
 } from "@ant-design/icons"
 import MainPage from "../components/MainPage.tsx";
 import Products from "../components/Products.tsx";
+import Product from "../components/Product.tsx";
 
 
 export enum PathEnum {
     Main = '/',
     Products = '/products',
-    Product = '/product:id',
+    Product = '/products/:id',
 }
 
 
@@ -34,7 +35,7 @@ const RoutesCustom = [{
     path: PathEnum.Product,
     icon: null,
     title: 'Product',
-    element: 'Product',
+    element: <Product />,
     exact: true,
     hideLink: true
 }]
