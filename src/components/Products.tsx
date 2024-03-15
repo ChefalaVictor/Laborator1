@@ -1,38 +1,17 @@
 import CardCustom from "./CardCustom.tsx";
-import {useEffect, useState} from "react";
+import useProducts from "../zsm/stores/useProducts.ts";
+import {useEffect} from "react";
 
-
-export interface IProduct {
-    brand: string;
-    category: string
-    description: string
-    discountPercentage: number
-    id: number
-    images: string[]
-    price: number
-    rating: number
-    stock: number
-    thumbnail: string
-    title: string
-
-}
 
 const Products = () => {
-
-    const [products, setProducts] = useState<IProduct[]>([])
-
-
-    const fetchProducts = () => {
-        fetch('https://dummyjson.com/products')
-            .then(response => response.json())
-            .then(data => setProducts(data.products));
-    }
+    const productsStore = useProducts()
 
     useEffect(() => {
-        fetchProducts()
+           productsStore.fetchProducts()
     }, [])
 
-    return (
+
+    return productsStore.loading ? <div>Loading...</div> : (
         <div style={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -40,9 +19,9 @@ const Products = () => {
             gap: '1rem',
             padding: '1rem',
             margin: '1rem'
-        
+
         }}>
-            {products.map((product, index) => {
+            {productsStore.getProducts().map((product, index) => {
                     return (
                         <CardCustom key={index} product={product} />
                     )
