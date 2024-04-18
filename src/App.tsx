@@ -1,25 +1,28 @@
 import React from 'react';
-import {Layout} from 'antd';
-import SidebarCustom from "./layouts/SidebarCustom.tsx";
-import HeaderCustom from "./layouts/HeaderCustom.tsx";
-import FooterCustom from "./layouts/FooterCustom.tsx";
-import ContentCustom from "./layouts/ContentCustom.tsx";
+import SidebarCustom from './layouts/SidebarCustom';
+import ContentCustom from './layouts/ContentCustom';
+import HeaderCustom from './layouts/HeaderCustom';
+import FooterCustom from './layouts/FooterCustom';
+import { Layout } from 'antd';
 
-const App: React.FC = () => {
+
+const App: React.FC = () =>{
     return (
-        <>
-            <Layout hasSider>
-                <SidebarCustom />
+        <Layout hasSider>
 
-                <Layout style={{marginLeft: 200}}>
+            <SidebarCustom></SidebarCustom>
 
-                    <HeaderCustom />
+            <Layout style={{ marginLeft: 200 }}>
 
-                    <ContentCustom />
-                    <FooterCustom />
-                </Layout>
+                <HeaderCustom></HeaderCustom>
+
+                <ContentCustom >
+
+                </ContentCustom>
+
+                <FooterCustom></FooterCustom>
             </Layout>
-        </>
+        </Layout>
     );
 };
 

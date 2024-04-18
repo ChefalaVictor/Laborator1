@@ -1,15 +1,18 @@
 import {
-    HomeOutlined, ProductOutlined
+    HomeOutlined, ProductOutlined,FormOutlined, LoginOutlined
 } from "@ant-design/icons"
 import MainPage from "../components/MainPage.tsx";
 import Products from "../components/Products.tsx";
-import Product from "../components/Product.tsx";
+import Form from "../components/FormCustom.tsx";
+import LoginCustom from "../components/LoginCustom.tsx";
 
 
 export enum PathEnum {
     Main = '/',
     Products = '/products',
-    Product = '/products/:id',
+    //Product = '/product:id',
+    Form = '/form',
+    LoginCustom = '/login'
 }
 
 
@@ -32,13 +35,22 @@ const RoutesCustom = [{
 
 }, {
     id: '3',
-    path: PathEnum.Product,
-    icon: null,
-    title: 'Product',
-    element: <Product />,
+    path: PathEnum.Form,
+    icon: <FormOutlined />,
+    title: 'Form',
+    element: <Form />,
     exact: true,
-    hideLink: true
-}]
+    hideLink: false
+},
+    {
+        id: '4',
+        path: PathEnum.LoginCustom,
+        icon: <LoginOutlined />,
+        title: 'Login',
+        element: <LoginCustom />,
+        exact: true,
+        hideLink: false
+    }]
 
 
 export default RoutesCustom;

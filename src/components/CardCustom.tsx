@@ -1,34 +1,27 @@
-import {Card} from 'antd';
-import {DeleteOutlined, EllipsisOutlined} from "@ant-design/icons";
-import useProducts, {TProduct} from "../zsm/stores/useProducts.ts";
-import {Link} from "react-router-dom";
+import { Card } from 'antd';
+import { IProduct } from '../layouts/ContentCustom';
+import { DollarOutlined } from '@ant-design/icons';
+const { Meta } = Card;
 
-const {Meta} = Card;
-
-
-interface ICardCustom {
-    product: TProduct
+interface IProductProps{
+    product:  IProduct
 }
 
-const CardCustom = (props: ICardCustom) => {
-    const productsStore = useProducts()
-    const {product} = props;
-    return (
-        <Link to={`/products/${product.id}`}>
-            <Card
-                hoverable
-                style={{width: 240}}
-                cover={<img alt={product.title} src={product.thumbnail} />}
-                actions={[
-                    <DeleteOutlined key="delete" onClick={() => productsStore.deleteProductById(product.id)} />,
-                    <EllipsisOutlined key="ellipsis" />,
-                ]}
+const CardCustom = (props: IProductProps) => {
+    const {product}= props;
+    return(
+        <Card
+            hoverable
+            style={{ width: 240 }}
+            cover={<img alt={product.title} src={product.thumbnail} />}
+        >
 
-            >
-                <Meta title={product.title} description={product.description} />
-            </Card>
-        </Link>
-    )
+            <Meta title = {product.title} description={product.description} />
+            <br />
+            <h1><DollarOutlined />  {product.price}</h1>
+            <h3>Stock: {product.stock} items</h3>
+
+        </Card>
+    );
 }
-
-export default CardCustom
+export default CardCustom;

@@ -1,7 +1,7 @@
 const MainPage = () => {
     return (
         <div>
-            Main Page
+            Pagina Principala, Informatii despre "INCALTAMINTE DE FOTBAL"
         </div>
     )
 }

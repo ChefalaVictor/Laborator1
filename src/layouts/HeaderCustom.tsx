@@ -1,10 +1,13 @@
-import {Layout} from "antd";
 
-const {Header} = Layout;
+import { Layout } from "antd"
 
-const HeaderCustom = () => {
+const {Header} = Layout
+
+
+const HeaderCustom = () =>
+{
     return (
-        <Header />
+        <Header/>
     )
 }
 
